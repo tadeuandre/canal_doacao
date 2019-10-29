@@ -4,11 +4,20 @@ import java.util.List;
 
 public abstract class Produto {
 
-	public static int qtdeProduto;
+	private int id;
 	private String nome;
 	private Float quantidade;
 	private boolean isNovo;
 	private List<String> imagens;
+	public static int qtdeProduto;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;

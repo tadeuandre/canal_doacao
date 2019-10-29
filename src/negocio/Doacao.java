@@ -7,11 +7,21 @@ import modelo.Produto;
 
 public class Doacao {
 
+	private int id;
+
 	private List<Produto> produtos;
-	
+
 	private Beneficiario beneficiario;
-	
+
 	private Date dataDivulgacao;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public List<Produto> getProdutos() {
 		return produtos;
@@ -36,7 +46,7 @@ public class Doacao {
 	public void setDataDivulgacao(Date dataDivulgacao) {
 		this.dataDivulgacao = dataDivulgacao;
 	}
-	
+
 	public void exibir() {
 		if (this.validar()) {
 			System.out.println("Doação: ");
@@ -45,11 +55,11 @@ public class Doacao {
 			System.out.println("Inválido!");
 		}
 	}
-	
+
 	@Override
 	public String toString() {
-		return String.format("[produtos=" + produtos + ", beneficiario=" + beneficiario + ", dataDivulgacao=" + dataDivulgacao
-				+ "]");
+		return String.format("[produtos=" + produtos + ", beneficiario=" + beneficiario + ", dataDivulgacao="
+				+ dataDivulgacao + "]");
 	}
 
 	private boolean validar() {

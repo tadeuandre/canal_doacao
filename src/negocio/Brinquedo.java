@@ -4,12 +4,21 @@ import modelo.Produto;
 
 public class Brinquedo extends Produto {
 
+	private int id;
 	private String tipo;
 	private String faixaEtaria;
 	private String genero;
 
 	public Brinquedo() {
 		qtdeProduto++;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTipo() {
