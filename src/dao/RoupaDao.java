@@ -8,16 +8,17 @@ import java.util.List;
 
 import conexao.Conexao;
 import negocio.Brinquedo;
+import negocio.Roupa;
 
-public class BrinquedoDao {
+public class RoupaDao {
 
-	public static boolean incluir(Brinquedo brinquedo) {
+	public static boolean incluir(Roupa roupa) {
 		try {
 			PreparedStatement ps = Conexao.obterConexao()
-					.prepareStatement("INSERT into TBrinquedo (tipo, faixa_etaria, genero) values (?,?,?)");
-			ps.setString(1, brinquedo.getTipo());
-			ps.setString(2, brinquedo.getFaixaEtaria());
-			ps.setString(3, brinquedo.getNome());
+					.prepareStatement("INSERT into TRoupa (tipo, faixa_etaria, genero) values (?,?,?)");
+			ps.setString(1, roupa.getTipo());
+			ps.setString(2, roupa.getFaixaEtaria());
+			ps.setString(3, roupa.getNome());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {
@@ -30,7 +31,7 @@ public class BrinquedoDao {
 	public static List<Brinquedo> obterLista() {
 		List<Brinquedo> lista = new ArrayList<Brinquedo>();
 
-		String sql = "SELECT * FROM TBrinquedo ORDER BY nome";
+		String sql = "SELECT * FROM TRoupa ORDER BY nome";
 
 		try {
 			PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
@@ -49,30 +50,10 @@ public class BrinquedoDao {
 		return lista;
 
 	}
-
-	public static Brinquedo recuperar(int id) {
-		Brinquedo brinquedo = new Brinquedo();
-		try {
-			PreparedStatement ps = Conexao.obterConexao().prepareStatement("SELECT * FROM TBrinquedo ID = ?");
-			ps.setInt(1, id);
-			ResultSet rs = ps.executeQuery();
-
-			if (rs.next()) {
-				brinquedo.setTipo(rs.getString("tipo"));
-				brinquedo.setGenero(rs.getString("genero"));
-				brinquedo.setFaixaEtaria(rs.getString("faixa_etaria"));
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return brinquedo;
-	}
-
+	
 	public static void excluir(int id) {
 		try {
-			PreparedStatement ps = Conexao.obterConexao().prepareStatement("DELETE * FROM TDoacao WHERE id = ?");
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement("DELETE * FROM TRoupa WHERE id = ?");
 			ps.setInt(0, id);
 			ps.execute();
 		} catch (SQLException e) {

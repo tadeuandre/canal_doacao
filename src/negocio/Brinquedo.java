@@ -1,8 +1,9 @@
 package negocio;
 
+import auxiliar.IExibicao;
 import modelo.Produto;
 
-public class Brinquedo extends Produto {
+public class Brinquedo extends Produto implements IExibicao {
 
 	private int id;
 	private String tipo;

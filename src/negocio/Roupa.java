@@ -1,8 +1,9 @@
 package negocio;
 
+import auxiliar.IExibicao;
 import modelo.Produto;
 
-public class Roupa extends Produto {
+public class Roupa extends Produto implements IExibicao {
 
 	private String tamanho;
 	private String marca;

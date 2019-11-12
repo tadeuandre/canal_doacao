@@ -1,6 +1,8 @@
 package negocio;
 
-public class Beneficiario {
+import auxiliar.IExibicao;
+
+public class Beneficiario implements IExibicao {
 
 	private int id;
 	private String nome;

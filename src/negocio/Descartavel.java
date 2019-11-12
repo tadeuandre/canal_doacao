@@ -2,9 +2,10 @@ package negocio;
 
 import java.util.Date;
 
+import auxiliar.IExibicao;
 import modelo.Produto;
 
-public class Descartavel extends Produto {
+public class Descartavel extends Produto implements IExibicao {
 
 	private Date validade;
 	private String unidadeMedida;

@@ -42,7 +42,9 @@ public class BeneficiarioController extends HttpServlet {
 		beneficiario.setEndereco(endereco);
 		beneficiario.setTipo(tipo);
 
-		BeneficiarioDao.incluir(beneficiario);			
+		BeneficiarioDao.incluir(beneficiario);
+		
+		request.getRequestDispatcher("finaliza.jsp").forward(request, response);
 	}
 
 }

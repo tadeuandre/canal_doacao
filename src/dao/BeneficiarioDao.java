@@ -70,5 +70,16 @@ public class BeneficiarioDao {
 
 		return beneficiario;
 	}
+	
+	public static void excluir(int id) {
+		try {
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement("DELETE FROM TBeneficiario ID = ?");
+			ps.setInt(0, id);
+			ps.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
