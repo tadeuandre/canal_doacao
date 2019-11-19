@@ -43,6 +43,10 @@ public class BrinquedoController extends HttpServlet {
 		brinquedo.setTipo(tipo);
 
 		BrinquedoDao.incluir(brinquedo);
+
+		request.setAttribute("mensagem", brinquedo.toString());
+		request.setAttribute("titulo", "Brinquedo");			
+		request.setAttribute("controller", "BrinquedoController");
 		
 		request.getRequestDispatcher("finaliza.jsp").forward(request, response);
 	}

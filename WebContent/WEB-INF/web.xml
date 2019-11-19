@@ -41,6 +41,26 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>RoupaController</display-name>
+    <servlet-name>RoupaController</servlet-name>
+    <servlet-class>controle.RoupaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoupaController</servlet-name>
+    <url-pattern>/RoupaController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DescartavelController</display-name>
+    <servlet-name>DescartavelController</servlet-name>
+    <servlet-class>controle.DescartavelController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DescartavelController</servlet-name>
+    <url-pattern>/DescartavelController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>DoacaoController</display-name>
     <servlet-name>DoacaoController</servlet-name>
     <servlet-class>controle.DoacaoController</servlet-class>

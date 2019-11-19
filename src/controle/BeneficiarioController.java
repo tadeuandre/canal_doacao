@@ -43,6 +43,10 @@ public class BeneficiarioController extends HttpServlet {
 		beneficiario.setTipo(tipo);
 
 		BeneficiarioDao.incluir(beneficiario);
+
+		request.setAttribute("mensagem", beneficiario.toString());
+		request.setAttribute("titulo", "Beneficiario");			
+		request.setAttribute("controller", "BeneficiarioController");
 		
 		request.getRequestDispatcher("finaliza.jsp").forward(request, response);
 	}
