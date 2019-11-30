@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conexao.Conexao;
-import negocio.Brinquedo;
 import negocio.Roupa;
 
 public class RoupaDao {
@@ -81,6 +80,27 @@ public class RoupaDao {
 
 	}
 
+	public static Roupa recuperar(int id) {
+		Roupa roupa = new Roupa();
+		try {
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement("SELECT * FROM TRoupa ID = ?");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				roupa.setId(rs.getInt("id"));
+				roupa.setTipo(rs.getString("tipo"));
+				roupa.setMarca(rs.getString("marca"));
+				roupa.setTamanho(rs.getString("tamanho"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return roupa;
+	}
+	
 	public static void excluir(int id) {
 		try {
 			PreparedStatement ps = Conexao.obterConexao().prepareStatement("DELETE FROM TRoupa WHERE id = ?");
