@@ -34,7 +34,7 @@
     		<option value="RoupaDetalhe.jsp">Roupa</option>
     		<option value="DescartavelDetalhe.jsp">Descartável</option>
     		<option value="DoacaoDetalhe.jsp">Doação</option>
-    		<option value="usuarioCadastro">Usuário</option>
+    		<option value="usuarioCadastro.jsp">Usuário</option>
     	</select>
     </div>
     <button type="submit" class="btn btn-default">Acessar</button>

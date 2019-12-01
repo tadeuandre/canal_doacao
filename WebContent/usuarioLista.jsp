@@ -31,6 +31,8 @@
 	        <th>Nome</th>
 	        <th>Email</th>
 	        <th>Senha</th>
+	        <th>Alterar</th>
+	        <th>Excluir</th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -39,6 +41,8 @@
 	        <td><%=item.getNome()%></td>
 	        <td><%=item.getEmail()%></td>
 	        <td><%=item.getSenha()%></td>
+	        <td><a href="UsuarioController?idUsuarioParaAlterar=<%=item.getId()%>">Alterar</a></td>
+	        <td><a href="UsuarioController?idUsuarioParaExcluir=<%=item.getId()%>">Excluir</a></td>
 	      </tr>
 	      	<%}%>
 	    </tbody>
