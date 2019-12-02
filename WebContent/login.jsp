@@ -11,6 +11,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<%
+	boolean invalido = false;
+	if(request.getAttribute("invalido") != null){
+		invalido = (Boolean)request.getAttribute("invalido");
+	}
+	%>
 
 <div class="container">
   <h2>Login</h2>
@@ -25,18 +31,7 @@
       <label for="pwd">Senha:</label>
       <input type="password" class="form-control" id="pwd" placeholder="Entre com a sua senha" name="senha">
     </div>
-    
-    <div class="form-group">
-    	<label for="cadastroSelecionado">Cadastro: </label>
-    	<select id="cadastroSelecionado" name="cadastroSelecionado">
-    		<option value="BeneficiarioDetalhe.jsp">Beneficiário</option>
-    		<option value="BrinquedoDetalhe.jsp">Brinquedo</option>
-    		<option value="RoupaDetalhe.jsp">Roupa</option>
-    		<option value="DescartavelDetalhe.jsp">Descartável</option>
-    		<option value="DoacaoDetalhe.jsp">Doação</option>
-    		<option value="usuarioCadastro.jsp">Usuário</option>
-    	</select>
-    </div>
+
     <button type="submit" class="btn btn-default">Acessar</button>
   </form>
 </div>

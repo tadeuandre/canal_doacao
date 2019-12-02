@@ -38,12 +38,12 @@ public class RoupaController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String faixaEtaria = request.getParameter("faixaEtaria");
-		String genero = request.getParameter("genero");
 		String tipo = request.getParameter("tipo");
 		String tamanho = request.getParameter("tamanho");
 		String marca = request.getParameter("marca");
 		boolean isNovo = "S".equals(request.getParameter("novo"));
-		String nome = request.getParameter("tipo");
+		String nome = request.getParameter("nome");
+		Float quantidade = Float.valueOf((String) request.getParameter("quantidade"));
 
 		Roupa roupa = new Roupa();
 		roupa.setFaixaEtaria(faixaEtaria);
@@ -52,6 +52,7 @@ public class RoupaController extends HttpServlet {
 		roupa.setMarca(marca);
 		roupa.setNovo(isNovo);
 		roupa.setNome(nome);
+		roupa.setQuantidade(quantidade);
 
 		RoupaDao.incluir(roupa);
 

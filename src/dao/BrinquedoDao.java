@@ -18,7 +18,7 @@ public class BrinquedoDao {
 	public static boolean incluir(Brinquedo brinquedo) {
 		try {
 			PreparedStatement ps = Conexao.obterConexao()
-					.prepareStatement("INSERT into TBrinquedo (tipo, faixa_etaria, genero) values (?,?,?)");
+					.prepareStatement("INSERT into TBrinquedo (tipo, faixaEtaria, genero) values (?,?,?)");
 			ps.setString(1, brinquedo.getTipo());
 			ps.setString(2, brinquedo.getFaixaEtaria());
 			ps.setString(3, brinquedo.getNome());
@@ -44,7 +44,7 @@ public class BrinquedoDao {
 				Brinquedo brinquedo = new Brinquedo();
 				brinquedo.setTipo(rs.getString("tipo"));
 				brinquedo.setGenero(rs.getString("genero"));
-				brinquedo.setFaixaEtaria(rs.getString("faixa_etaria"));
+				brinquedo.setFaixaEtaria(rs.getString("faixaEtaria"));
 				lista.add(brinquedo);
 			}
 		} catch (SQLException e) {
@@ -67,7 +67,7 @@ public class BrinquedoDao {
 				Brinquedo brinquedo = new Brinquedo();
 				brinquedo.setTipo(rs.getString("tipo"));
 				brinquedo.setGenero(rs.getString("genero"));
-				brinquedo.setFaixaEtaria(rs.getString("faixa_etaria"));
+				brinquedo.setFaixaEtaria(rs.getString("faixaEtaria"));
 				lista.add(brinquedo);
 			}
 		} catch (SQLException e) {
@@ -87,7 +87,7 @@ public class BrinquedoDao {
 			if (rs.next()) {
 				brinquedo.setTipo(rs.getString("tipo"));
 				brinquedo.setGenero(rs.getString("genero"));
-				brinquedo.setFaixaEtaria(rs.getString("faixa_etaria"));
+				brinquedo.setFaixaEtaria(rs.getString("faixaEtaria"));
 			}
 
 		} catch (SQLException e) {

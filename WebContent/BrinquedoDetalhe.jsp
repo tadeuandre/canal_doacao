@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Brinquedo Detalhe</title>
+<title>AppCanalDoacao</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
@@ -17,6 +17,14 @@
 <body>
 	<div class="container">
 		<form action="BrinquedoController" method="post" style="width: 100%;">
+		  <div class="form-group">
+		    <label for="nome">Nome:</label>
+		    <input type="text" class="form-control" id="nome" name="nome">
+		  </div>
+		  <div class="form-group">
+		    <label for="quantidade">Quantidade:</label>
+		    <input type="text" class="form-control" id="quantidade" name="quantidade">
+		  </div>
 		  <div class="form-group">
 		    <label for="tipo">Tipo:</label>
 		    <input type="text" class="form-control" id="tipo" name="tipo">

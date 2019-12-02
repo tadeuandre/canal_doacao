@@ -39,9 +39,8 @@ public class DescartavelController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String faixaEtaria = request.getParameter("faixaEtaria");
-		String genero = request.getParameter("genero");
-		String tipo = request.getParameter("tipo");
+		String nome = request.getParameter("nome");
+		Float quantidade = Float.valueOf((String) request.getParameter("faixaEtaria"));
 		boolean isAberto = "S".equals(request.getParameter("aberto"));
 		boolean isRemedio = "S".equals(request.getParameter("remedio"));
 		String unidadeMedida = request.getParameter("unidadeMedida");
@@ -58,6 +57,8 @@ public class DescartavelController extends HttpServlet {
 		descartavel.setRemedio(isRemedio);
 		descartavel.setUnidadeMedida(unidadeMedida);
 		descartavel.setValidade(validade);
+		descartavel.setNome(nome);
+		descartavel.setQuantidade(quantidade);
 
 		DescartavelDao.incluir(descartavel);
 

@@ -17,6 +17,16 @@
   <form action="DescartavelController" method="post">
   
     <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" class="form-control" id="nome" placeholder="Entre com o nome" name="nome">
+    </div>
+    
+    <div class="form-group">
+      <label for="quantidade">Quantidade:</label>
+      <input type="text" class="form-control" id="quantidade" placeholder="Entre com a quantidade" name="quantidade">
+    </div>
+  
+    <div class="form-group">
       <label for="validade">Validade:</label>
       <input type="text" class="form-control" id="validade" placeholder="Entre com a validade" name="validade">
     </div>

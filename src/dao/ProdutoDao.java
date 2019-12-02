@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import conexao.Conexao;
@@ -26,8 +28,8 @@ public class ProdutoDao {
 	
 		return produto;
 	}
-	public static Set<Produto> obterListaPorDoacao(int idDoacao){
-		Set<Produto> lista = new HashSet<Produto>();
+	public static List<Produto> obterListaPorDoacao(int idDoacao){
+		List<Produto> lista = new ArrayList<Produto>();
 
 		String sql = "SELECT * FROM TDoacaoProduto where idDoacao = ?";
 		

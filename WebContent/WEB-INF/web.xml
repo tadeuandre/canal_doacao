@@ -79,4 +79,44 @@
     <servlet-name>AcessoController</servlet-name>
     <url-pattern>/AcessoController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaDoacaoController</display-name>
+    <servlet-name>ConsultaDoacaoController</servlet-name>
+    <servlet-class>controle.ConsultaDoacaoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaDoacaoController</servlet-name>
+    <url-pattern>/ConsultaDoacaoController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExclusaoDoacaoController</display-name>
+    <servlet-name>ExclusaoDoacaoController</servlet-name>
+    <servlet-class>controle.ExclusaoDoacaoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExclusaoDoacaoController</servlet-name>
+    <url-pattern>/ExclusaoDoacaoController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProdutoDoacaoController</display-name>
+    <servlet-name>ProdutoDoacaoController</servlet-name>
+    <servlet-class>controle.ProdutoDoacaoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProdutoDoacaoController</servlet-name>
+    <url-pattern>/ProdutoDoacaoController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SolicitanteDoacaoController</display-name>
+    <servlet-name>SolicitanteDoacaoController</servlet-name>
+    <servlet-class>controle.SolicitanteDoacaoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SolicitanteDoacaoController</servlet-name>
+    <url-pattern>/SolicitanteDoacaoController</url-pattern>
+  </servlet-mapping>
 </web-app>

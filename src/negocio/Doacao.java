@@ -14,6 +14,8 @@ public class Doacao {
 	private Beneficiario beneficiario;
 
 	private Date dataDivulgacao;
+	
+	private int[] qtdeProdutos;
 
 	public int getId() {
 		return id;
@@ -47,12 +49,20 @@ public class Doacao {
 		this.dataDivulgacao = dataDivulgacao;
 	}
 
+	public int[] getQtdeProdutos() {
+		return qtdeProdutos;
+	}
+
+	public void setQtdeProdutos(int[] qtdeProdutos) {
+		this.qtdeProdutos = qtdeProdutos;
+	}
+
 	public void exibir() {
 		if (this.validar()) {
-			System.out.println("Doação: ");
+			System.out.println("Doaï¿½ï¿½o: ");
 			System.out.println(this);
 		} else {
-			System.out.println("Inválido!");
+			System.out.println("Invï¿½lido!");
 		}
 	}
 

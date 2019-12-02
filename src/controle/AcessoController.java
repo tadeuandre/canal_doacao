@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.DoacaoDao;
 import dao.UsuarioDao;
+import negocio.Usuario;
 
 public class AcessoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,12 +36,15 @@ public class AcessoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
-		String cadastroSelecionado = request.getParameter("cadastroSelecionado");
+		Usuario usuario = UsuarioDao.validar(email, senha);
 		
-		if(UsuarioDao.validar(email, senha) != null) {			
-			new UsuarioController().doGet(request, response);			
+		if(usuario != null) {			
+			request.getSession().setAttribute("user", usuario);
+			request.setAttribute("doacoes", DoacaoDao.obterLista());
+			request.getRequestDispatcher("main.jsp").forward(request, response);		
 		} else {			
-			request.getRequestDispatcher(cadastroSelecionado).forward(request, response);
+			request.setAttribute("invalido", true);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
 

@@ -9,6 +9,12 @@ public class Beneficiario implements IExibicao {
 	private String endereco;
 	private String tipo;
 
+	public Beneficiario(Integer id) {
+		this.id = id;
+	}
+
+	public Beneficiario() {}
+
 	public int getId() {
 		return id;
 	}
