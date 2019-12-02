@@ -8,6 +8,7 @@ import java.util.List;
 
 import conexao.Conexao;
 import negocio.Brinquedo;
+import negocio.Descartavel;
 import negocio.Roupa;
 
 public class RoupaDao {
@@ -79,6 +80,27 @@ public class RoupaDao {
 		}
 		return lista;
 
+	}
+
+	public static Roupa recuperar(int id) {
+		Roupa roupa = new Roupa();
+		try {
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement("SELECT * FROM TDescartavel ID = ?");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				roupa.setTipo(rs.getString("tipo"));
+				roupa.setMarca(rs.getString("marca"));
+				roupa.setTamanho(rs.getString("tamanho"));
+				roupa.setFaixaEtaria(rs.getString("faixa_etaria"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return roupa;
 	}
 
 	public static void excluir(int id) {

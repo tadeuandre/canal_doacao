@@ -14,13 +14,13 @@ public class ProdutoDao {
 	
 	public static Produto obterPorId(int id){
 		
-		Produto produto = BrinquedoDao.obterPorId(id); 			
+		Produto produto = BrinquedoDao.recuperar(id); 			
 		
 		if(produto == null) {
-			produto = DescartavelDao.obterPorId(id);
+			produto = DescartavelDao.recuperar(id);
 			
 			if(produto == null) {
-				produto = RoupaDao.obterPorId(id);							
+				produto = RoupaDao.recuperar(id);							
 			}
 		}
 	
