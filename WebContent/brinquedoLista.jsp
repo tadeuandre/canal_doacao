@@ -25,27 +25,28 @@
    
    <div class="panel-body">
 	    <div class="btn-group btn-group-justified">
-			<form action="BrinquedoController" method="get">
-				<input type="hidden" name="tela" value="Brinquedo">
-				<button type="submit" class="btn btn-default">Novo Brinquedo</button>
-				<hr>
-			</form>
+		    <div class="btn-group">
+				<form action="BrinquedoController" method="get">
+					<input type="hidden" name="tela" value="Brinquedo">
+					<button type="submit" class="btn btn-default">Novo Brinquedo</button>
+				</form>
+		    </div>
+	
+		    <div class="btn-group">
+		    </div>
+	
+		    <div class="btn-group">
+		    </div>
+	
+		    <div class="btn-group">
+				<c:import url="doacaoVoltar.jsp"/>
+		    </div>
+	
+		    <div class="btn-group">
+				<c:import url="sair.jsp"/>
+		    </div>
 	    </div>
-
-	    <div class="btn-group">
-	    </div>
-
-	    <div class="btn-group">
-	    </div>
-
-	    <div class="btn-group">
-			<c:import url="brinquedoVoltar.jsp"/>
-	    </div>
-
-	    <div class="btn-group">
-			<c:import url="sair.jsp"/>
-	    </div>
-    </div>
+	    
 		<%if(brinquedos != null){%>
 		<table class="table table-striped">
 	    	<thead>

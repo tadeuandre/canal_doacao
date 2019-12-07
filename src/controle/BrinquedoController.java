@@ -27,8 +27,8 @@ public class BrinquedoController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("idGame") != null) {
-			int id = Integer.valueOf(request.getParameter("idGame"));
+		if(request.getParameter("idBrinquedo") != null) {
+			int id = Integer.valueOf(request.getParameter("idBrinquedo"));
 			
 			BrinquedoDao.excluir(id);
 			

@@ -34,7 +34,7 @@
 		
 		  	<div class="btn-group">
 				<form action="<%=controller%>">
-					<button type="submit" class="btn btn-link">Voltar</button>
+					<button type="submit" class="btn btn-default">Voltar</button>
 				</form>
    			</div>
 		  	

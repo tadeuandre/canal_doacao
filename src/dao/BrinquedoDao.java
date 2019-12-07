@@ -23,9 +23,9 @@ public class BrinquedoDao {
 			PreparedStatement ps = Conexao.obterConexao()
 					.prepareStatement("INSERT into TBrinquedo (idProduto, tipo, faixaEtaria, genero) values (?, ?,?,?)");
 			ps.setInt(1, produto.getId());
-			ps.setString(1, brinquedo.getTipo());
-			ps.setString(2, brinquedo.getFaixaEtaria());
-			ps.setString(3, brinquedo.getGenero());
+			ps.setString(2, brinquedo.getTipo());
+			ps.setString(3, brinquedo.getFaixaEtaria());
+			ps.setString(4, brinquedo.getGenero());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {
@@ -46,6 +46,7 @@ public class BrinquedoDao {
 
 			while (rs.next()) {
 				Brinquedo brinquedo = new Brinquedo();
+				brinquedo.setId(rs.getInt("idBrinquedo"));
 				brinquedo.setTipo(rs.getString("tipo"));
 				brinquedo.setGenero(rs.getString("genero"));
 				brinquedo.setFaixaEtaria(rs.getString("faixaEtaria"));
@@ -69,6 +70,7 @@ public class BrinquedoDao {
 
 			while (rs.next()) {
 				Brinquedo brinquedo = new Brinquedo();
+				brinquedo.setId(rs.getInt("idBrinquedo"));
 				brinquedo.setTipo(rs.getString("tipo"));
 				brinquedo.setGenero(rs.getString("genero"));
 				brinquedo.setFaixaEtaria(rs.getString("faixaEtaria"));
@@ -89,6 +91,7 @@ public class BrinquedoDao {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
+				brinquedo.setId(rs.getInt("idBrinquedo"));
 				brinquedo.setTipo(rs.getString("tipo"));
 				brinquedo.setGenero(rs.getString("genero"));
 				brinquedo.setFaixaEtaria(rs.getString("faixaEtaria"));
@@ -103,11 +106,10 @@ public class BrinquedoDao {
 
 	public static void excluir(int id) {
 		try {
-			PreparedStatement ps = Conexao.obterConexao().prepareStatement("DELETE * FROM TDoacao WHERE id = ?");
-			ps.setInt(0, id);
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement("DELETE FROM TBrinquedo WHERE idBrinquedo = ?");
+			ps.setInt(1, id);
 			ps.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
