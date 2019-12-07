@@ -12,42 +12,45 @@ import negocio.Brinquedo;
 
 public class BrinquedoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public BrinquedoController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("brinquedos", BrinquedoDao.obterLista());
-		request.getRequestDispatcher("brinquedoLista.jsp").forward(request, response);
+		if(request.getParameter("tela") != null) {
+			request.getRequestDispatcher("brinquedoDetalhe.jsp").forward(request, response);
+		} else {
+			request.setAttribute("brinquedos", BrinquedoDao.obterLista());
+			request.getRequestDispatcher("brinquedoLista.jsp").forward(request, response);
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String faixaEtaria = request.getParameter("faixaEtaria");
-		String genero = request.getParameter("genero");
-		String tipo = request.getParameter("tipo");
-
-		Brinquedo brinquedo = new Brinquedo();
-		brinquedo.setFaixaEtaria(faixaEtaria);
-		brinquedo.setGenero(genero);
-		brinquedo.setTipo(tipo);
-
-		BrinquedoDao.incluir(brinquedo);
-
-		request.setAttribute("mensagem", brinquedo.toString());
-		request.setAttribute("titulo", "Brinquedo");			
-		request.setAttribute("controller", "BrinquedoController");
+		if(request.getParameter("idGame") != null) {
+			int id = Integer.valueOf(request.getParameter("idGame"));
+			
+			BrinquedoDao.excluir(id);
+			
+			request.setAttribute("mensagem", "Brinquedo deletado!");
+		} else {
+			Brinquedo brinquedo = new Brinquedo(
+					request.getParameter("nome"),
+					Float.valueOf(request.getParameter("quantidade")),
+					Boolean.valueOf(request.getParameter("isNovo")),
+					request.getParameter("tipo"),
+					request.getParameter("faixaEtaria"),
+					request.getParameter("genero")
+				);
 		
+			BrinquedoDao.incluir(brinquedo);
+			
+			request.setAttribute("mensagem", brinquedo.toString());
+		}
+		request.setAttribute("titulo", "Brinquedo");
+			
+		request.setAttribute("controller", "BrinquedoController");
+
 		request.getRequestDispatcher("finaliza.jsp").forward(request, response);
 	}
 

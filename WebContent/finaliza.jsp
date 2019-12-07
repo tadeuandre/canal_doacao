@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 <head>
-  <title>AppEmprestimo</title>
+  <title>AppCanalDoacao</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -18,21 +19,38 @@
 <div class="container">
 <div class="panel-group">
 <div class="panel panel-default">
-<div class="panel-heading">
-
-  <h4>Finaliza</h4>
-	<form action="<%=controller%>">
-		<button type="submit" class="btn btn-link">Voltar</button>
-	</form>
-   </div>
+	<c:import url="cabecalho.jsp"/>
    
    	<div class="panel-body">
-	  <div class="btn-group btn-group-justified">
-		  <h2><%=titulo%></h2>
-		  <div class="alert alert-success">
-		    <strong>Sucesso!</strong> <%=mensagem%>
-		  </div>
-	  </div>
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+			</div>
+		  
+		  	<div class="btn-group">
+		  	</div>
+		
+		  	<div class="btn-group">
+		  	</div>
+		
+		  	<div class="btn-group">
+				<form action="<%=controller%>">
+					<button type="submit" class="btn btn-link">Voltar</button>
+				</form>
+   			</div>
+		  	
+		  	<div class="btn-group">
+				<c:import url="sair.jsp"/>
+		 	</div>
+		</div>
+
+	   	<div class="panel-body">
+			<div class="btn-group btn-group-justified">
+				<h2><%=titulo%></h2>
+				<div class="alert alert-success">
+					<strong>Sucesso!</strong> <%=mensagem%>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 </div>

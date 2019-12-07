@@ -9,6 +9,15 @@ public class Brinquedo extends Produto implements IExibicao {
 	private String tipo;
 	private String faixaEtaria;
 	private String genero;
+	
+	public Brinquedo(String nome, Float quantidade, Boolean isNovo, String tipo, String faixaEtaria, String genero) {
+		this.setNome(nome);
+		this.setQuantidade(quantidade);
+		this.setNovo(isNovo);
+		this.tipo = tipo;
+		this.faixaEtaria = faixaEtaria;
+		this.genero = genero;
+	}
 
 	public Brinquedo() {
 		qtdeProduto++;

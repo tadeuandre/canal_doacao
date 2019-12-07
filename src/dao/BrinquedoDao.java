@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conexao.Conexao;
+import modelo.Produto;
 import negocio.Brinquedo;
 
 public class BrinquedoDao {
@@ -17,11 +18,14 @@ public class BrinquedoDao {
 
 	public static boolean incluir(Brinquedo brinquedo) {
 		try {
+			Produto produto = ProdutoDao.incluir(brinquedo);
+
 			PreparedStatement ps = Conexao.obterConexao()
-					.prepareStatement("INSERT into TBrinquedo (tipo, faixaEtaria, genero) values (?,?,?)");
+					.prepareStatement("INSERT into TBrinquedo (idProduto, tipo, faixaEtaria, genero) values (?, ?,?,?)");
+			ps.setInt(1, produto.getId());
 			ps.setString(1, brinquedo.getTipo());
 			ps.setString(2, brinquedo.getFaixaEtaria());
-			ps.setString(3, brinquedo.getNome());
+			ps.setString(3, brinquedo.getGenero());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {

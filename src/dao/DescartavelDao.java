@@ -39,7 +39,7 @@ public class DescartavelDao {
 	public static List<Descartavel> obterLista() {
 		List<Descartavel> lista = new ArrayList<Descartavel>();
 
-		String sql = "SELECT * FROM TBrinquedo ORDER BY nome";
+		String sql = "SELECT * FROM TDescartavel";
 
 		try {
 			PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
