@@ -21,7 +21,7 @@ public class BrinquedoDao {
 			Produto produto = ProdutoDao.incluir(brinquedo);
 
 			PreparedStatement ps = Conexao.obterConexao()
-					.prepareStatement("INSERT into TBrinquedo (idProduto, tipo, faixaEtaria, genero) values (?, ?,?,?)");
+					.prepareStatement("INSERT into TBrinquedo (idProduto, tipo, faixaEtaria, genero) values (?, ?, ?, ?)");
 			ps.setInt(1, produto.getId());
 			ps.setString(2, brinquedo.getTipo());
 			ps.setString(3, brinquedo.getFaixaEtaria());

@@ -7,22 +7,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conexao.Conexao;
+import modelo.Produto;
 import negocio.Roupa;
 
 public class RoupaDao {
 
-	private static String SQL_DOACAO = "SELECT * FROM  TPRODUTO P INNER JOIN TDESCARTAVEL D ON P.ID = D.ID_PRODUTO LEFT JOIN TDOACAOPRODUTO DP ON P.ID = DP.ID_PRODUTO";
+	private static String SQL_DOACAO = "SELECT * FROM  TPRODUTO P INNER JOIN TDESCARTAVEL D ON P.IDPRODUTO = D.IDPRODUTO LEFT JOIN TDOACAOPRODUTO DP ON P.IDPRODUTO = DP.IDPRODUTO";
 	private static String SQL_DOADO_NAO = SQL_DOACAO + "WHERE ID_DOACAO IS NULL";
 	private static String SQL_DOADO_SIM = SQL_DOACAO + "WHERE ID_DOACAO IS NOT NULL";
 
 	public static boolean incluir(Roupa roupa) {
 		try {
+			Produto produto = ProdutoDao.incluir(roupa);
+
 			PreparedStatement ps = Conexao.obterConexao()
-					.prepareStatement("INSERT into TRoupa (tamanho, tipo, faixa_etaria, marca) values (?,?,?,?)");
-			ps.setString(1, roupa.getTamanho());
-			ps.setString(2, roupa.getTipo());
-			ps.setString(3, roupa.getFaixaEtaria());
-			ps.setString(4, roupa.getMarca());
+					.prepareStatement("INSERT into TRoupa (idProduto, tamanho, tipo, faixaEtaria, marca) values (?, ?, ?, ?, ?)");
+			ps.setInt(1, produto.getId());
+			ps.setString(2, roupa.getTamanho());
+			ps.setString(3, roupa.getTipo());
+			ps.setString(4, roupa.getFaixaEtaria());
+			ps.setString(5, roupa.getMarca());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {
@@ -35,7 +39,7 @@ public class RoupaDao {
 	public static List<Roupa> obterLista() {
 		List<Roupa> lista = new ArrayList<Roupa>();
 
-		String sql = "SELECT * FROM TRoupa";
+		String sql = "SELECT * FROM TRoupa r INNER JOIN TProduto p ON r.idProduto = p.idProduto";
 
 		try {
 			PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
@@ -43,10 +47,14 @@ public class RoupaDao {
 
 			while (rs.next()) {
 				Roupa roupa = new Roupa();
+				roupa.setId(rs.getInt("idRoupa"));
+				roupa.setNome(rs.getString("nome"));
 				roupa.setTipo(rs.getString("tipo"));
 				roupa.setMarca(rs.getString("marca"));
 				roupa.setTamanho(rs.getString("tamanho"));
-				roupa.setFaixaEtaria(rs.getString("faixa_etaria"));
+				roupa.setFaixaEtaria(rs.getString("faixaEtaria"));
+				roupa.setNovo(rs.getBoolean("novo"));
+				roupa.setQuantidade(rs.getFloat("quantidade"));
 				lista.add(roupa);
 			}
 		} catch (SQLException e) {
@@ -67,10 +75,14 @@ public class RoupaDao {
 
 			while (rs.next()) {
 				Roupa roupa = new Roupa();
+				roupa.setId(rs.getInt("idRoupa"));
+				roupa.setNome(rs.getString("nome"));
 				roupa.setTipo(rs.getString("tipo"));
 				roupa.setMarca(rs.getString("marca"));
 				roupa.setTamanho(rs.getString("tamanho"));
-				roupa.setFaixaEtaria(rs.getString("faixa_etaria"));
+				roupa.setFaixaEtaria(rs.getString("faixaEtaria"));
+				roupa.setNovo(rs.getBoolean("novo"));
+				roupa.setQuantidade(rs.getFloat("quantidade"));
 				lista.add(roupa);
 			}
 		} catch (SQLException e) {
@@ -83,15 +95,19 @@ public class RoupaDao {
 	public static Roupa recuperar(int id) {
 		Roupa roupa = new Roupa();
 		try {
-			PreparedStatement ps = Conexao.obterConexao().prepareStatement("SELECT * FROM TRoupa ID = ?");
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement("SELECT * FROM TRoupa r idRoupa = ? INNER JOIN TProduto p ON r.idProduto = p.idProduto");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				roupa.setId(rs.getInt("id"));
+				roupa.setId(rs.getInt("idRoupa"));
+				roupa.setNome(rs.getString("nome"));
 				roupa.setTipo(rs.getString("tipo"));
 				roupa.setMarca(rs.getString("marca"));
 				roupa.setTamanho(rs.getString("tamanho"));
+				roupa.setFaixaEtaria(rs.getString("faixaEtaria"));
+				roupa.setNovo(rs.getBoolean("novo"));
+				roupa.setQuantidade(rs.getFloat("quantidade"));
 			}
 
 		} catch (SQLException e) {
@@ -103,11 +119,10 @@ public class RoupaDao {
 	
 	public static void excluir(int id) {
 		try {
-			PreparedStatement ps = Conexao.obterConexao().prepareStatement("DELETE FROM TRoupa WHERE id = ?");
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement("DELETE FROM TRoupa WHERE idRoupa = ?");
 			ps.setInt(0, id);
 			ps.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
