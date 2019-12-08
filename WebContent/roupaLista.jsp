@@ -55,7 +55,7 @@
 	    	<tbody>
 	    	<%for(Roupa item : roupas){%>
 	    	<form action="RoupaController" method="post">
-	    		<input type="hidden" name="idGame" value="<%=item.getId()%>">
+	    		<input type="hidden" name="idRoupa" value="<%=item.getId()%>">
 		      	<tr>
 		        	<td><%=item%></td>
 		        	<td><button type="submit" class="btn btn-link">Excluir</button></td>

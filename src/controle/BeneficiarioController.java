@@ -13,41 +13,42 @@ import negocio.Beneficiario;
 public class BeneficiarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public BeneficiarioController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("beneficiarios", BeneficiarioDao.obterLista());
-		request.getRequestDispatcher("beneficiarioLista.jsp").forward(request, response);
+		if(request.getParameter("tela") != null) {
+			request.getRequestDispatcher("beneficiarioDetalhe.jsp").forward(request, response);
+		} else {
+			request.setAttribute("beneficiarios", BeneficiarioDao.obterLista());
+			request.getRequestDispatcher("beneficiarioLista.jsp").forward(request, response);
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome = request.getParameter("nome");
-		String endereco = request.getParameter("endereco");
-		String tipo = request.getParameter("tipo");
+		if(request.getParameter("idBeneficiario") != null) {
+			int id = Integer.valueOf(request.getParameter("idBeneficiario"));
+			
+			BeneficiarioDao.excluir(id);
+			
+			request.setAttribute("mensagem", "Beneficiario deletado!");
+		} else {
+			String nome = request.getParameter("nome");
+			String endereco = request.getParameter("endereco");
+			String tipo = request.getParameter("tipo");
 
-		Beneficiario beneficiario = new Beneficiario();
-		beneficiario.setNome(nome);
-		beneficiario.setEndereco(endereco);
-		beneficiario.setTipo(tipo);
+			Beneficiario beneficiario = new Beneficiario();
+			beneficiario.setNome(nome);
+			beneficiario.setEndereco(endereco);
+			beneficiario.setTipo(tipo);
 
-		BeneficiarioDao.incluir(beneficiario);
+			BeneficiarioDao.incluir(beneficiario);
 
-		request.setAttribute("mensagem", beneficiario.toString());
+			request.setAttribute("mensagem", beneficiario.toString());
+		}
 		request.setAttribute("titulo", "Beneficiario");			
 		request.setAttribute("controller", "BeneficiarioController");
-		
 		request.getRequestDispatcher("finaliza.jsp").forward(request, response);
 	}
 
