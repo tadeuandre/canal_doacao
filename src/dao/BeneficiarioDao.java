@@ -22,7 +22,7 @@ public class BeneficiarioDao {
 
 			while (rs.next()) {
 				Beneficiario beneficiario = new Beneficiario();
-				beneficiario.setId(rs.getInt("id"));
+				beneficiario.setId(rs.getInt("idBeneficiario"));
 				beneficiario.setTipo(rs.getString("tipo"));
 				beneficiario.setEndereco(rs.getString("endereco"));
 				beneficiario.setNome(rs.getString("nome"));
@@ -53,12 +53,12 @@ public class BeneficiarioDao {
 	public static Beneficiario recuperar(int id) {
 		Beneficiario beneficiario = new Beneficiario();
 		try {
-			PreparedStatement ps = Conexao.obterConexao().prepareStatement("SELECT * FROM TBeneficiario ID = ?");
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement("SELECT * FROM TBeneficiario idBeneficiario = ?");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				beneficiario.setId(rs.getInt("id"));
+				beneficiario.setId(rs.getInt("idBeneficiario"));
 				beneficiario.setNome(rs.getString("nome"));
 				beneficiario.setTipo(rs.getString("tipo"));
 				beneficiario.setEndereco(rs.getString("endereco"));
@@ -73,11 +73,10 @@ public class BeneficiarioDao {
 	
 	public static void excluir(int id) {
 		try {
-			PreparedStatement ps = Conexao.obterConexao().prepareStatement("DELETE FROM TBeneficiario ID = ?");
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement("DELETE FROM TBeneficiario idBeneficiario = ?");
 			ps.setInt(0, id);
 			ps.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
